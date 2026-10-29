@@ -1,0 +1,19 @@
+# build output
+bin/
+obj/
+probe/bin/
+probe/obj/
+
+# Zebra SDK binaries (proprietary, install from Zebra SDK, do NOT commit)
+Symbol.RFID3.Host.dll
+rfidapi32pc.dll
+
+# IDE
+.vs/
+*.user
+*.suo
+*.DotSettings.user
+
+# local
+*.log
+build_ui_new.txt

@@ -1,0 +1,206 @@
+﻿ASSEMBLY: Symbol.RFID3.Host, Version=1.2.0.0, Culture=neutral, PublicKeyToken=68ec8db391f150ca  runtime=4.0.30319.42000 os=64bit
+### Symbol.RFID3.RFIDReader
+  ctor()
+  ctor(String hostName, UInt32 port, UInt32 timeoutMilliseconds)
+  prop SecureConnectionInfo SecureConnectionInfo {get;set;}
+  prop UInt32 Port {get;set;}
+  prop UInt32 TimeoutMilliseconds {get;set;}
+  prop String HostName {get;set;}
+  prop Boolean IsConnected {get;}
+  prop Config Config {get;}
+  prop Actions Actions {get;}
+  prop Events Events {get;}
+  prop ReaderCapabilities ReaderCapabilities {get;}
+  prop VersionInfo VersionInfo {get;}
+  meth Void Dispose()
+  meth Void Connect()
+  meth Void AcceptConnection(Socket readerSocket)
+  meth Void Reconnect()
+  meth Void Disconnect()
+### Symbol.RFID3.Actions
+  meth TagData[] GetReadTags(Int32 numberOfTags)
+  meth Void GetstationaryTags()
+  meth RFSurveyData[] GetRFSurveyData(Int32 dataCount)
+  meth RFSurveyData GetRFSurvey()
+  meth Boolean PurgeTags()
+  field Inventory Inventory
+  field RFSurvey RFSurvey
+  field TagAccess TagAccess
+  field PreFilters PreFilters
+  field TagLocationing TagLocationing
+  field BrandIDCheck BrandIdChk
+### Symbol.RFID3.TagAccess
+  meth TagData ReadWait(String tagID, ReadAccessParams readAccessParams, AntennaInfo antennaInfo)
+  meth Void ReadEvent(ReadAccessParams readAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void WriteWait(String tagID, WriteAccessParams writeAccessParams, AntennaInfo antennaInfo)
+  meth Void WriteTagIDWait(String tagID, WriteSpecificFieldAccessParams writeSpecificFieldAccessParams, AntennaInfo antennaInfo)
+  meth Void WriteKillPasswordWait(String tagID, WriteSpecificFieldAccessParams writeSpecificFieldAccessParams, AntennaInfo antennaInfo)
+  meth Void WriteAccessPasswordWait(String tagID, WriteSpecificFieldAccessParams writeSpecificFieldAccessParams, AntennaInfo antennaInfo)
+  meth Void WriteEvent(WriteAccessParams writeAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void KillWait(String tagID, KillAccessParams killAccessParams, AntennaInfo antennaInfo)
+  meth Void KillEvent(KillAccessParams killAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void LockWait(String tagID, LockAccessParams lockAccessParams, AntennaInfo antennaInfo)
+  meth Void LockEvent(LockAccessParams lockAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void BlockWriteWait(String tagID, WriteAccessParams writeAccessParams, AntennaInfo antennaInfo)
+  meth Void BlockWriteEvent(WriteAccessParams writeAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void BlockEraseWait(String tagID, BlockEraseAccessParams blockEraseAccessParams, AntennaInfo antennaInfo)
+  meth Void BlockEraseEvent(BlockEraseAccessParams blockEraseAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth TagData BlockPermalockWait(String tagID, BlockPermalockAccessParams blockPermalockAccessParams, AntennaInfo antennaInfo)
+  meth Void BlockPermalockEvent(BlockPermalockAccessParams blockPermalockAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void RecommisionWait(String tagID, RecommisionAccessParams recommisionAccessParams, AntennaInfo antennaInfo)
+  meth Void RecommisionEvent(RecommisionAccessParams recommisionAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth TagData AuthenticateWait(String tagID, AuthenticateAccessParams authenticateAccessParams, AntennaInfo antennaInfo)
+  meth Void AuthenticateEvent(AuthenticateAccessParams authenticateAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth TagData ReadBufferWait(String tagID, ReadBufferAccessParams readBufferAccessParams, AntennaInfo antennaInfo)
+  meth Void ReadBufferEvent(ReadBufferAccessParams readBufferAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth TagData UntraceableWait(String tagID, UntraceableAccessParams untraceableAccessParams, AntennaInfo antennaInfo)
+  meth Void UntraceableEvent(UntraceableAccessParams untraceableAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth TagData CryptoWait(String tagID, CryptoAccessParams cryptoAccessParams, AntennaInfo antennaInfo)
+  meth Void CryptoEvent(CryptoAccessParams cryptoAccessParams, AccessFilter accessFilter, AntennaInfo antennaInfo)
+  meth Void GetLastAccessResult(UInt32& successCount, UInt32& failureCount)
+  field Sequence OperationSequence
+  field NXP NXP
+  field Fujitsu Fujitsu
+  field Impinj Impinj
+### Symbol.RFID3.TagAccess+WriteAccessParams
+  ctor()
+  prop MEMORY_BANK MemoryBank {get;set;}
+  prop UInt32 ByteOffset {get;set;}
+  prop UInt32 WriteDataLength {get;set;}
+  prop UInt32 AccessPassword {get;set;}
+  prop Byte[] WriteData {get;set;}
+### Symbol.RFID3.TagAccess+ReadAccessParams
+  ctor()
+  prop MEMORY_BANK MemoryBank {get;set;}
+  prop UInt32 ByteOffset {get;set;}
+  prop UInt32 ByteCount {get;set;}
+  prop UInt32 AccessPassword {get;set;}
+### Symbol.RFID3.TagData
+  ctor()
+  prop Boolean ContainsLocationInfo {get;}
+  prop String TagID {get;}
+  prop UInt32 TagIDAllocated {get;}
+  prop UInt16 PC {get;}
+  prop UInt16 XPC_W1 {get;}
+  prop UInt16 XPC_W2 {get;}
+  prop UInt16 CRC {get;}
+  prop UInt16 AntennaID {get;}
+  prop SByte PeakRSSI {get;}
+  prop UInt16 ChannelIndex {get;}
+  prop UInt16 TagSeenCount {get;}
+  prop ACCESS_OPERATION_CODE OpCode {get;}
+  prop ACCESS_OPERATION_STATUS OpStatus {get;}
+  prop MEMORY_BANK MemoryBank {get;}
+  prop String MemoryBankData {get;}
+  prop UInt32 MemoryBankDataOffset {get;}
+  prop UInt32 MemoryBankDataAllocated {get;}
+  prop TAG_EVENT TagEvent {get;}
+  prop TAG_TRANSITION_STATUS tagTransitionStatus {get;}
+  prop DateTime TagEventTimeStamp {get;}
+  prop TagZoneInfo TagZoneInfo {get;}
+  prop GPSLocation GPSLocation {get;}
+  prop AntennaPortInfo AntennaPortInfo {get;}
+  prop Int16 PhaseInfo {get;}
+  prop Byte BrandValid {get;}
+  field MLTAlgorithmReport MLTAlgorithmReport
+  field AccessOperationResult AccessOperationResult
+  field LocationInfo LocationInfo
+  field SeenTime SeenTime
+### Symbol.RFID3.Events
+  prop String HostName {get;}
+  prop Boolean NotifyHandheldTriggerEvent {get;set;}
+  prop Boolean NotifyGPIEvent {get;set;}
+  prop Boolean NotifyBufferFullWarningEvent {get;set;}
+  prop Boolean NotifyBufferFullEvent {get;set;}
+  prop Boolean NotifyAntennaEvent {get;set;}
+  prop Boolean NotifyInventoryStartEvent {get;set;}
+  prop Boolean NotifyInventoryStopEvent {get;set;}
+  prop Boolean NotifyRFSurveyStartEvent {get;set;}
+  prop Boolean NotifyRFSurveyStopEvent {get;set;}
+  prop Boolean NotifyAccessStartEvent {get;set;}
+  prop Boolean NotifyEASAlarmEvent {get;set;}
+  prop Boolean NotifyDebugInfoEvent {get;set;}
+  prop Boolean NotifyAccessStopEvent {get;set;}
+  prop Boolean NotifyReaderExceptionEvent {get;set;}
+  prop Boolean NotifyReaderDisconnectEvent {get;set;}
+  prop Boolean AttachTagDataWithReadEvent {get;set;}
+  prop Boolean AttachRFSurveyDataWithReadEvent {get;set;}
+  prop Boolean NotifyTemperatureAlarmEvent {get;set;}
+### Symbol.RFID3.Events+ReadEventData
+  field TagData TagData
+### Symbol.RFID3.Events+ReadEventArgs
+  prop ReadEventData ReadEventData {get;}
+### Symbol.RFID3.Inventory
+  meth Void Perform()
+  meth Void Perform(PostFilter postFilterInfo, TriggerInfo triggerInfo, AntennaInfo antennaInfo)
+  meth Void RunSmartAlgorithms(AntennaInfo antennaInfo, TriggerInfo triggerInfo, SmartAlgorithmsParams algorithmParams)
+  meth Void Perform(ZoneSequence zoneSequence)
+  meth Void Perform(PostFilter postFilterInfo, TriggerInfo triggerInfo, AntennaInfo antennaInfo, ZoneSequence zoneSequence)
+  meth Void Perform(ZoneTransitionReportConfig zoneTransitionReportConfig, TriggerInfo triggerInfo)
+  meth Void Stop()
+  meth Void StopPortal()
+### Symbol.RFID3.AccessFilter
+  ctor()
+  prop MATCH_PATTERN MatchPattern {get;set;}
+  prop Boolean UseRSSIRangeFilter {get;set;}
+  field TagPatternBase TagPatternA
+  field TagPatternBase TagPatternB
+  field RssiRangeFilter RssiRangeFilter
+### Symbol.RFID3.AccessOperationResult
+  field FujitsuReadBlockLockResult FujitsuReadBlockLockResult
+  field FujitsuBurstWriteResult FujitsuBurstWriteResult
+  field FujitsuBurstEraseResult FujitsuBurstEraseResult
+  field QTData ImpinjQTData
+  field ChangeConfigResult NXPChangeConfigResult
+  field AuthenticateReadBufferResult AuthenticateReadBufferResult
+### Symbol.RFID3.MEMORY_BANK (enum: MEMORY_BANK_RESERVED,MEMORY_BANK_EPC,MEMORY_BANK_TID,MEMORY_BANK_USER)
+### Symbol.RFID3.RFIDResults (enum: RFID_API_SUCCESS,RFID_API_COMMAND_TIMEOUT,RFID_API_PARAM_ERROR,RFID_API_PARAM_OUT_OF_RANGE,RFID_API_CANNOT_ALLOC_MEM,RFID_API_UNKNOWN_ERROR,RFID_API_INVALID_HANDLE,RFID_API_BUFFER_TOO_SMALL,RFID_READER_FUNCTION_UNSUPPORTED,RFID_RECONNECT_FAILED,RFID_API_DATA_NOT_INITIALISED,RFID_API_ZONE_ID_ALREADY_EXITS,RFID_API_ZONE_ID_NOT_FOUND,RFID_COMM_OPEN_ERROR,RFID_COMM_CONNECTION_ALREADY_EXISTS,RFID_COMM_RESOLVE_ERROR,RFID_COMM_SEND_ERROR,RFID_COMM_RECV_ERROR,RFID_COMM_NO_CONNECTION,RFID_INVALID_SOCKET,RFID_READER_REGION_NOT_CONFIGURED,RFID_READER_REINITIALIZING,RFID_SECURE_CONNECTION_ERROR,RFID_ROOT_SECURITY_CERTIFICATE_ERROR,RFID_HOST_SECURITY_CERTIFICATE_ERROR,RFID_HOST_SECURITY_KEY_ERROR,RFID_CONFIG_GET_FAILED,RFID_CONFIG_SET_FAILED,RFID_CONFIG_NOT_SUPPORTED,RFID_CAP_NOT_SUPPORTED,RFID_CAP_GET_FAILED,RFID_FILTER_NO_FILTER,RFID_FILTER_INVALID_INDEX,RFID_FILTER_MAX_FILTERS_EXCEEDED,RFID_NO_READ_TAGS,RFID_NO_REPORTED_EVENTS,RFID_INVENTORY_MAX_TAGS_EXCEEDED,RFID_INVENTORY_IN_PROGRESS,RFID_NO_INVENTORY_IN_PROGRESS,RFID_TAG_LOCATING_IN_PROGRESS,RFID_NO_TAG_LOCATING_IN_PROGRESS,RFID_NXP_EAS_SCAN_IN_PROGRESS,RFID_NO_NXP_EAS_SCAN_IN_PROGRESS,RFID_ACCESS_IN_PROGRESS,RFID_NO_ACCESS_IN_PROGRESS,RFID_ACCESS_TAG_READ_FAILED,RFID_ACCESS_TAG_WRITE_FAILED,RFID_ACCESS_TAG_LOCK_FAILED,RFID_ACCESS_TAG_KILL_FAILED,RFID_ACCESS_TAG_BLOCK_ERASE_FAILED,RFID_ACCESS_TAG_BLOCK_WRITE_FAILED,RFID_ACCESS_TAG_NOT_FOUND,RFID_ACCESS_SEQUENCE_NOT_INITIALIZED,RFID_ACCESS_SEQUENCE_EMPTY,RFID_ACCESS_SEQUENCE_IN_USE,RFID_ACCESS_SEQUENCE_MAX_OP_EXCEEDED,RFID_ACCESS_TAG_RECOMMISSION_FAILED,RFID_ACCESS_TAG_BLOCK_PERMALOCK_FAILED,RFID_ACCESS_NXP_TAG_SET_EAS_FAILED,RFID_ACCESS_NXP_TAG_READ_PROTECT_FAILED,RFID_ACCESS_FUJITSU_CHANGE_WORDLOCK_FAILED,RFID_ACCESS_FUJITSU_CHANGE_BLOCKLOCK_FAILED,RFID_ACCESS_FUJITSU_READ_BLOCKLOCK_FAILED,RFID_ACCESS_FUJITSU_BURST_WRITE_FAILED,RFID_ACCESS_FUJITSU_BURST_ERASE_FAILED,RFID_ACCESS_FUJITSU_CHANGE_BLOCK_OR_AREA_GROUPPASSWORD_FAILED,RFID_ACCESS_FUJITSU_AREA_READLOCK_FAILED,RFID_ACCESS_FUJITSU_AREA_WRITELOCK_FAILED,RFID_ACCESS_FUJITSU_AREA_WRITELOCK_WOPASSWORD_FAILED,RFID_ACCESS_NXP_CHANGE_CONFIG_FAILED,RFID_ACCESS_IMPINJ_QT_READ_FAILED,RFID_ACCESS_IMPINJ_QT_WRITE_FAILED,RFID_RM_INVALID_USERNAME_PASSWORD,RFID_RM_NO_UPDATION_IN_PROGRESS,RFID_RM_UPDATION_IN_PROGRESS,RFID_RM_COMMAND_FAILED,RFID_INVALID_ERROR_CODE,RFID_RFSURVEY_IN_PROGRESS,RFID_NO_RFSURVEY_IN_PROGRESS)
+### Symbol.RFID3.Config
+  prop MLTAlgorithmParameters MLTAlgorithmConfiguration {get;set;}
+  prop UInt16 DutyCycleIndex {get;set;}
+  prop RADIO_POWER_STATE RadioPowerState {get;set;}
+  prop UInt32 SledBatteryLevel {get;}
+  prop BATTERY_STATUS SledBatteryStatus {get;}
+  prop Antennas Antennas {get;}
+  prop GPIs GPI {get;}
+  prop GPOs GPO {get;}
+  prop Int32 DefaultReadTagsCount {get;set;}
+  prop Int32 DefaultRFSurveyCount {get;set;}
+  prop TRACE_LEVEL TraceLevel {get;set;}
+  meth Void SetZoneReaderConfig(ZoneReaderConfig zoneReaderConfig)
+  meth Void SetTagStorageSettings(TagStorageSettings tagStorageSettings)
+  meth Void SetCustomParam(String strXMLBuffer, PARAM_TYPE paramType)
+  meth TagStorageSettings GetTagStorageSettings()
+  meth String GetCustomParam(PARAM_TYPE paramType)
+  meth Void ResetFactoryDefaults()
+  meth Void SaveLlrpConfig(IntPtr rsvd)
+  meth Boolean GetSaveLlrpConfigStatus(Byte& pSaveStatus)
+  meth Void SetDebugMask(String debugMask, UInt16 byteOffSet)
+### Symbol.RFID3.Antennas+Config
+  ctor()
+  ctor(UInt16 receiveSensitivityIndex, UInt16 transmitPowerIndex, UInt16 transmitFrequencyIndex)
+  prop UInt16 ReceiveSensitivityIndex {get;set;}
+  prop UInt16 TransmitPowerIndex {get;set;}
+  prop UInt16 TransmitFrequencyIndex {get;set;}
+### Symbol.RFID3.Antennas+AntennaRfConfig
+  ctor()
+  prop AntennaStopTrigger AntennaStopTriggerConfig {get;set;}
+  prop UInt16 ReceiveSensitivityIndex {get;set;}
+  prop UInt16 TransmitPowerIndex {get;set;}
+  prop UInt16 TransmitFrequencyIndex {get;set;}
+  prop UInt32 RfModeTableIndex {get;set;}
+  prop UInt32 Tari {get;set;}
+  prop UInt16 TransmitPort {get;set;}
+  prop UInt16 ReceivePort {get;set;}
+  prop UInt16 ExtendedOnTimeMicroseconds {get;set;}
+### Symbol.RFID3.Antennas+AntennaProperties
+  prop UInt16 Index {get;}
+  meth PhysicalProperties GetPhysicalProperties()
+  meth Config GetConfig()
+  meth Void SetConfig(Config antennaConfig)
+  meth Void SetRfConfig(AntennaRfConfig antennaRfConfig)
+  meth AntennaRfConfig GetRfConfig()
+  meth SingulationControl GetSingulationControl()
+  meth Void SetSingulationControl(SingulationControl antennaSingulationControl)
+  meth RFMode GetRFMode()
+  meth Void SetRFMode(RFMode antennaRFMode)

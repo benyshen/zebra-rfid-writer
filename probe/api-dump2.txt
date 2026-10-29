@@ -1,0 +1,100 @@
+﻿### Symbol.RFID3.TagAccess+WriteSpecificFieldAccessParams
+  ctor()
+  prop UInt32 WriteDataLength {get;set;}
+  prop UInt32 AccessPassword {get;set;}
+  prop Byte[] WriteData {get;set;}
+### Symbol.RFID3.TagAccess+LockAccessParams
+  ctor()
+  prop Int32 KillPasswordMemory {get;}
+  prop Int32 AccessPasswordMemory {get;}
+  prop Int32 EPCMemory {get;}
+  prop Int32 TIDMemory {get;}
+  prop Int32 UserMemory {get;}
+  prop UInt32 AccessPassword {get;set;}
+  prop LOCK_PRIVILEGE[] LockPrivilege {get;set;}
+### Symbol.RFID3.ReaderCapabilities
+  prop String FirwareVersion {get;}
+  prop String ModelName {get;}
+  prop Int32 NumAntennaSupported {get;}
+  prop Int32 NumGPIPorts {get;}
+  prop Int32 NumGPOPorts {get;}
+  prop Boolean IsUTCClockSupported {get;}
+  prop Int32[] ReceiveSensitivityValues {get;}
+  prop ReaderModuleVersion[] Versions {get;}
+  prop UInt16[] DutyCycleValues {get;}
+  prop Boolean IsBlockEraseSupported {get;}
+  prop Boolean IsBlockWriteSupported {get;}
+  prop Boolean IsRecommissionSupported {get;}
+  prop Boolean IsBlockPermalockSupported {get;}
+  prop Boolean IsWriteUMISupported {get;}
+  prop Boolean IsRadioPowerControlSupported {get;}
+  prop Boolean IsTagLocationingSupported {get;}
+  prop Boolean IsNXPCommandSupported {get;}
+  prop Boolean IsFujitsuCommandSupported {get;}
+  prop Boolean IsImpinjCommandSupported {get;}
+  prop Boolean IsPeriodicTagReportsSupported {get;}
+  prop Boolean IsTagPhaseReportingSupported {get;}
+  prop Boolean IsZoneTransitionSupported {get;}
+  prop Boolean IsZoneSuppported {get;}
+  prop Boolean IsAntennaRFConfigSupported {get;}
+  prop Boolean IsTagMovingStationarySupported {get;}
+  prop Boolean IsZebraTriggerSupported {get;}
+  prop Boolean IsG2V2CommandSupported {get;}
+  prop Boolean IsGPSReportingSupported {get;}
+  prop Boolean IsTagFiltersSupported {get;}
+  prop Boolean IsTagInventoryStateAwareSingulationSupported {get;}
+  prop Int32 MaxNumOperationsInAccessSequence {get;}
+  prop Int32 MaxNumPreFilters {get;}
+  prop Int32 CountryCode {get;}
+  prop COMMUNICATION_STANDARD CommunicationStandard {get;}
+  prop Int32[] TransmitPowerLevelValues {get;}
+  prop Boolean IsHoppingEnabled {get;}
+  prop Int32[] FixedFreqValues {get;}
+  prop Boolean IsTagEventReportingSupported {get;}
+  prop Boolean IsRssiFilterSupported {get;}
+  field RFModes RFModes
+  field FrequencyHopInfo FrequencyHopInfo
+  field ReaderIdentification ReaderID
+### Symbol.RFID3.Antennas
+  prop Int32 Length {get;}
+  prop AntennaProperties Item {get;}
+  prop UInt16[] AvailableAntennas {get;}
+  meth Void SetRFMode(RFMode antennaRFMode)
+  meth Void SetConfig(Config antennaConfig)
+### Symbol.RFID3.Antennas+SingulationControl
+  ctor()
+  prop SESSION Session {get;set;}
+  prop UInt16 TagPopulation {get;set;}
+  prop UInt16 TagTransitTime {get;set;}
+  field SingulationAction Action
+### Symbol.RFID3.OperationFailureException
+  prop RFIDResults Result {get;}
+  prop String VendorMessage {get;}
+  prop String StatusDescription {get;}
+  prop DateTime TimeStamp {get;}
+  prop String Message {get;}
+  prop IDictionary Data {get;}
+  prop Exception InnerException {get;}
+  prop MethodBase TargetSite {get;}
+  prop String StackTrace {get;}
+  prop String HelpLink {get;set;}
+  prop String Source {get;set;}
+  prop Int32 HResult {get;set;}
+  meth String ToString()
+### Symbol.RFID3.InvalidUsageException
+  ctor(String sMessage, String sErrorString)
+  prop String Info {get;}
+  prop String VendorMessage {get;}
+  prop DateTime TimeStamp {get;}
+  prop String Message {get;}
+  prop IDictionary Data {get;}
+  prop Exception InnerException {get;}
+  prop MethodBase TargetSite {get;}
+  prop String StackTrace {get;}
+  prop String HelpLink {get;set;}
+  prop String Source {get;set;}
+  prop Int32 HResult {get;set;}
+  meth String ToString()
+### Symbol.RFID3.ACCESS_OPERATION_STATUS (enum: ACCESS_SUCCESS,ACCESS_TAG_NON_SPECIFIC_ERROR,ACCESS_READER_NON_SPECIFIC_ERROR,ACCESS_NO_RESPONSE_FROM_TAG,ACCESS_INSUFFIFICENT_POWER,ACCESS_INSUFFICIENT_POWER,ACCESS_TAG_MEMORY_LOCKED_ERROR,ACCESS_TAG_MEMORY_OVERRUN_ERROR,ACCESS_ZERO_KILL_PASSWORD_ERROR)
+### Symbol.RFID3.VersionInfo
+  prop String Version {get;}
