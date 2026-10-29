@@ -17,3 +17,6 @@ rfidapi32pc.dll
 # local
 *.log
 build_ui_new.txt
+
+# 一次性建仓脚本
+tools/gh_create_*.py
